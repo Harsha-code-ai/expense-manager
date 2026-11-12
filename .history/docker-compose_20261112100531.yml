@@ -1,0 +1,24 @@
+services:
+  backend:
+    build: ./backend
+    container_name: expense-backend
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: "sqlite:////data/expenses.db"
+      SECRET_KEY: "change-this-to-a-long-random-string-before-real-use-9f8a7b6c5d4e3f2a1b0c"
+    volumes:
+      - expense_data:/data
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: expense-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  expense_data:
