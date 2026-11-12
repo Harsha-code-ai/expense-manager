@@ -15,7 +15,7 @@ ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Le
 /* ------------------------------------------------------------------ */
 /* Config & helpers                                                    */
 /* ------------------------------------------------------------------ */
-const API_BASE = "http://localhost:8001/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:8001/api";
 const CATEGORIES = ["Food", "Travel", "Bills", "Shopping", "Salary", "Other"];
 const CATEGORY_COLORS = {
   Food: "#f97316",
